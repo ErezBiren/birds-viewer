@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Bird } from "../types/bird";
+import ReactAudioPlayer from "react-audio-player";
 
 type MainViewProps = {
   bird?: Bird;
@@ -39,9 +40,7 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
           >
             Google Maps
           </a>
-          <audio controls>
-            <source src={bird.sound} type="audio/mpeg" />
-          </audio>
+          <ReactAudioPlayer src={bird.sound} controls/>
         </div>
       )}
     </>
