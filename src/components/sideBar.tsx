@@ -3,6 +3,7 @@ import { Bird } from "../types/bird";
 import { useState, useEffect } from "react";
 import fetchNextBirds from "../api/zapariApi";
 import SideBarHeader from "./SideBarHeader";
+import SideBarItem from "./SideBarItem";
 
 const DEFAULT_TOTAL_AMOUNT = 5;
 const MAX_ITEMS_PER_FETCH = 2; // 2 items per fetch so it would be easy to see the change every scroll
@@ -19,11 +20,10 @@ const SideBar = ({
   defaultImage,
 }: SideBarProps) => {
   const [birds, setBirds] = useState<Bird[] | undefined>([]);
-
   const [totalAmount, setTotalAmount] = useState(DEFAULT_TOTAL_AMOUNT);
 
   useEffect(() => {
-    fetchNextData();
+    fetchMoreBirds();
   }, []);
 
   useEffect(() => {
@@ -34,11 +34,14 @@ const SideBar = ({
     }
   }, [birds?.length, totalAmount]);
 
-  async function fetchNextData() {
-    const remainedItems = totalAmount - (birds?.length ?? 0);
+  async function fetchMoreBirds() {
+    const remainedItemsToFetch = totalAmount - (birds?.length ?? 0);
 
+    // calculate how much items should we fetch
     const amount =
-      remainedItems > MAX_ITEMS_PER_FETCH ? MAX_ITEMS_PER_FETCH : remainedItems;
+      remainedItemsToFetch > MAX_ITEMS_PER_FETCH
+        ? MAX_ITEMS_PER_FETCH
+        : remainedItemsToFetch;
     const newBirds = await fetchNextBirds(amount);
 
     setBirds((prev) => {
@@ -65,7 +68,7 @@ const SideBar = ({
         }}
       />
       <InfiniteScroll
-        next={fetchNextData}
+        next={fetchMoreBirds}
         hasMore={!birds?.length ? true : birds?.length < totalAmount}
         loader={<h4>Loading...</h4>}
         dataLength={birds?.length ?? 0}
@@ -81,16 +84,7 @@ const SideBar = ({
               onSelectedItemChanged(item);
             }}
           >
-            <span className="font-bold">{item.name}</span>
-            <img
-              src={item.image}
-              alt={item.name}
-              className="object-cover m-1 w-100 h-100"
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // prevents looping
-                currentTarget.src = defaultImage;
-              }}
-            />
+            <SideBarItem item={item} defaultImage={defaultImage} />
           </div>
         ))}
       </InfiniteScroll>
