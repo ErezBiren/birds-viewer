@@ -28,9 +28,9 @@ const SideBar = ({
 
   useEffect(() => {
     // remove birds from the list if total now is smaller
-    if (totalAmount < birds?.length) {
-      const redundentItemsAmount = birds?.length - totalAmount;
-      setBirds((prev) => prev?.splice(-redundentItemsAmount));
+    if (birds && totalAmount < birds?.length) {
+      const redundantItemsAmount = birds?.length - totalAmount;
+      setBirds((prev) => prev?.splice(-redundantItemsAmount));
     }
   }, [birds?.length, totalAmount]);
 
@@ -44,8 +44,8 @@ const SideBar = ({
     setBirds((prev) => {
       const res = prev?.concat([...newBirds]);
 
-      // first time we fetch select the first element
-      if (prev?.length === 0 && res?.length > 0) {
+      // first time we fetch, select the first element
+      if (prev?.length === 0 && res && res?.length > 0) {
         onSelectedItemChanged(res[0]);
       }
       return res;
