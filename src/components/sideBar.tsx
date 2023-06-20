@@ -62,10 +62,10 @@ const SideBar = ({
   return (
     <div
       id="scrollableDiv"
-      className="w-1/5 h-screen pt-10 overflow-y-auto bg-gray-200"
+      className="w-1/5 h-screen overflow-y-auto bg-gray-200"
     >
       <div
-        className="self-start p-5 bg-gray-300 cursor-pointer"
+        className="sticky top-0 flex flex-row items-center self-start gap-10 p-5 bg-gray-300 cursor-pointer"
         onClick={() => setIsSettingsOpen(true)}
       >
         <img
@@ -73,8 +73,8 @@ const SideBar = ({
           alt="React Logo"
           className="self-start w-10 cursor-pointer"
         />
+        <span className="text-xl"> Rendered Items : {birds?.length} / {totalAmount}</span>
       </div>
-      {birds?.length}
       <InfiniteScroll
         next={fetchNextData}
         hasMore={!birds?.length ? true : birds?.length < totalAmount}
