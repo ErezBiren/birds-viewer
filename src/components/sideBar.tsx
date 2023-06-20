@@ -18,8 +18,21 @@ const sideBar = () => {
       }
 
       const data = await response.json();
-      const uniqueBirdsByName: Bird[] = Array.from(new Set(data.items));
-      uniqueBirdsByName[0].image = "";
+
+      if(!data.items){
+        throw new Error("No bird items found");
+      }
+
+      const uniqueBirdsByName = data.items.reduce(
+        (accumulator: Bird[], current: Bird) => {
+          if (!accumulator.find((item: Bird) => item.name === current.name)) {
+            accumulator.push(current);
+          }
+          return accumulator;
+        },
+        []
+      );
+
       setBirds(uniqueBirdsByName);
     } catch (error) {
       //setError(error.message);
