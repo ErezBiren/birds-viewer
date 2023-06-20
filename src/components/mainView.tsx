@@ -35,14 +35,13 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
           <a
             target="_blank"
             href={googleMapsLink}
-            className="text-xl font-medium text-blue-500 hover:underline"
+            className="text-xl font-medium text-green-500 hover:underline"
           >
-            go to google
+            Go to Google
           </a>
           <audio controls>
             <source src={bird.sound} type="audio/mpeg" />
           </audio>
-          {bird.sound}
         </div>
       )}
     </>

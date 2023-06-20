@@ -19,7 +19,7 @@ const SideBar = ({
         <div
           key={item.name}
           className={`flex flex-col items-center gap-2 m-5 cursor-pointer w-100px h-100px p-5 ${
-            bird?.name === item?.name ? "bg-green-500" : "bg-transparent"
+            bird?.name === item?.name ? "bg-green-400" : "bg-transparent"
           }`}
           onClick={() => {
             onSelectedItemChanged(item);
