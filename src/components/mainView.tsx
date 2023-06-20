@@ -26,7 +26,7 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
           <img
             src={bird.image}
             alt={bird.name}
-            className="object-cover w-96 h-96"
+            className="object-cover w-100 h-100"
             onError={({ currentTarget }) => {
               currentTarget.onerror = null; // prevents looping
               currentTarget.src = defaultImage;

@@ -1,3 +1,6 @@
+import { Bird } from "../types/bird";
+import  { v4 } from "uuid";
+
 const ZAPARI_API = "https://zapari.any.do/birds/";
 
 const useFetchNextBirds = () => {
@@ -14,7 +17,9 @@ const useFetchNextBirds = () => {
         throw new Error("No bird items found");
       }
 
-      return data.items;
+      const withIds = data.items.map((item: Bird) => ({ ...item, id: v4() }));
+
+      return withIds;
     } catch (error) {
       console.error(error);
     }

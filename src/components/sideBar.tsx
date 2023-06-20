@@ -71,7 +71,7 @@ const SideBar = ({
         <img
           src={SettingsLogo}
           alt="React Logo"
-          className="self-start w-10 cursor-pointer"
+          className="self-start w-6 cursor-pointer"
         />
         <span className="text-xl"> Rendered Items : {birds?.length} / {totalAmount}</span>
       </div>
@@ -82,11 +82,11 @@ const SideBar = ({
         dataLength={birds?.length ?? 0}
         scrollableTarget="scrollableDiv"
       >
-        {birds?.map((item: Bird, index: number) => (
+        {birds?.map((item: Bird) => (
           <div
-            key={index}
+            key={item.id}
             className={`flex flex-col items-center gap-2 m-5 cursor-pointer w-100px h-100px p-5 ${
-              bird?.name === item?.name ? "bg-green-400" : "bg-transparent"
+              bird?.id === item?.id ? "bg-green-400" : "bg-transparent"
             }`}
             onClick={() => {
               onSelectedItemChanged(item);
