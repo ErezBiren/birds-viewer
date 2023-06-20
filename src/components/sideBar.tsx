@@ -56,7 +56,15 @@ const SideBar = ({
     const amount =
       remainedItems > MAX_ITEMS_PER_FETCH ? MAX_ITEMS_PER_FETCH : remainedItems;
     const newBirds = await fetchNextBirds(amount);
-    setBirds((prev) => prev?.concat([...newBirds]));
+
+    setBirds((prev) => {
+      const res = prev?.concat([...newBirds]);
+
+      if (prev?.length === 0 && res?.length > 0) {
+        onSelectedItemChanged(res[0]);
+      }
+      return res;
+    });
   }
 
   return (
@@ -73,7 +81,10 @@ const SideBar = ({
           alt="React Logo"
           className="self-start w-6 cursor-pointer"
         />
-        <span className="text-xl"> Rendered Items : {birds?.length} / {totalAmount}</span>
+        <span className="text-xl">
+          {" "}
+          Rendered Items : {birds?.length} / {totalAmount}
+        </span>
       </div>
       <InfiniteScroll
         next={fetchNextData}
