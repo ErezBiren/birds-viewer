@@ -21,7 +21,7 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
   return (
     <>
       {bird && (
-        <div className="flex flex-col items-center w-full gap-10 just">
+        <div className="flex flex-col items-center w-full gap-10">
           <span className="mt-10 text-2xl font-bold" >{bird.name}</span>
           <img
             src={bird.image}
