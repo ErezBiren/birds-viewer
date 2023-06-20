@@ -6,7 +6,7 @@ type MainViewProps = {
   defaultImage: string;
 };
 
-const googleMapsLinkWithCoordinates = "http://www.google.com/maps/place/";
+const googleMapsLinkWithCoordinates = "https://www.google.com/maps/search/?api=1&query=";
 
 const MainView = ({ bird, defaultImage }: MainViewProps) => {
   const [googleMapsLink, setGoogleMapsLink] = useState("");
@@ -14,12 +14,9 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
   useEffect(() => {
 
     if (!bird?.location?.lat || !bird.location?.lng) return;
-
-    const linkWithCoordinates = `${googleMapsLinkWithCoordinates}/ + ${bird.location.lat},${bird.location.lng}`;
+    const linkWithCoordinates = `${googleMapsLinkWithCoordinates}${bird.location.lat},${bird.location.lng}`;
     setGoogleMapsLink(linkWithCoordinates);
   }, [bird]);
-
-  //console.log(googleMapsLink);
 
   return (
     <>
