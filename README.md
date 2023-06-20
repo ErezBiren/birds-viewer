@@ -1,4 +1,6 @@
-# birds-viewer
+
+<h1 align="center"> birds-viewer</h1>
+
 ![image](https://github.com/ErezBiren/birds-viewer/assets/7828909/036ecfd5-8ce4-4acf-95c2-c81041177b00)
 
 ![image](https://github.com/ErezBiren/birds-viewer/assets/7828909/8cb43074-9929-4abb-95a5-a23428c55e17)
