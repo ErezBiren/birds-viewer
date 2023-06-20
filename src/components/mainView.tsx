@@ -12,11 +12,10 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
   const [googleMapsLink, setGoogleMapsLink] = useState("");
 
   useEffect(() => {
-    console.log(bird);
 
     if (!bird?.location?.lat || !bird.location?.lng) return;
 
-    const linkWithCoordinates = `${googleMapsLinkWithCoordinates}/ + ${bird?.location.lat},${bird?.location.lng}`;
+    const linkWithCoordinates = `${googleMapsLinkWithCoordinates}/ + ${bird.location.lat},${bird.location.lng}`;
     setGoogleMapsLink(linkWithCoordinates);
   }, [bird]);
 
@@ -25,12 +24,12 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
   return (
     <>
       {bird && (
-        <div className="flex flex-col items-center gap-10 bg-green-200 just">
-          <span>{bird.name}</span>
+        <div className="flex flex-col items-center w-full gap-10 just">
+          <span className="mt-10 font-bold">{bird.name}</span>
           <img
             src={bird.image}
             alt={bird.name}
-            className="object-cover w-100 h-100"
+            className="object-cover w-96 h-96"
             onError={({ currentTarget }) => {
               currentTarget.onerror = null; // prevents looping
               currentTarget.src = defaultImage;

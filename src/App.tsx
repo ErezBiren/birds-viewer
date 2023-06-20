@@ -5,9 +5,12 @@ import SideBar from "./components/sideBar";
 import { Bird } from "./types/bird";
 import birdDefaultImage from "./assets/birdDefaultImage.jpg";
 
+const DEFAULT_FETCH_AMOUNT = 5;
+
 function App() {
   const [birds, setBirds] = useState<Bird[]>([]);
   const [selectedBird, setSelectedBird] = useState<Bird | undefined>();
+  const [fetchAmount, setFetchAmount] = useState(DEFAULT_FETCH_AMOUNT)
 
   useEffect(() => {
     fetchBirds();
@@ -15,8 +18,7 @@ function App() {
 
   async function fetchBirds() {
     try {
-      const amount = 5;
-      const response = await fetch("https://zapari.any.do/birds/" + amount);
+      const response = await fetch("https://zapari.any.do/birds/" + fetchAmount);
       if (!response.ok) {
         throw new Error("Failed to fetch bird data");
       }
@@ -48,16 +50,17 @@ function App() {
   }
 
   return (
-    <>
-      <div className="flex flex-row gap-5 m-0 h-vh">
+    <div className="flex flex-row">
+      <div className="w-1/5 h-screen pt-10 overflow-y-auto bg-gray-200">
         <SideBar
           items={birds}
           onSelectedItemChanged={selectedItemChanged}
           defaultImage={birdDefaultImage}
         />
-        <MainView bird={selectedBird} defaultImage={birdDefaultImage}/>
       </div>
-    </>
+
+      <MainView bird={selectedBird} defaultImage={birdDefaultImage} />
+    </div>
   );
 }
 

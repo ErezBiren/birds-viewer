@@ -12,11 +12,11 @@ const SideBar = ({
   defaultImage,
 }: SideBarProps) => {
   return (
-    <div className="flex flex-col w-1/3 gap-10">
+    <div className="flex flex-col items-center gap-10">
       {items?.map((item: Bird) => (
         <div
           key={item.name}
-          className="flex flex-col gap-2 cursor-pointer w-100px h-100px"
+          className="flex flex-col items-center gap-2 cursor-pointer w-100px h-100px"
           onClick={() => {
             onSelectedItemChanged(item);
           }}
