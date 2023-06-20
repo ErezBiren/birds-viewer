@@ -16,6 +16,7 @@ async function fetchNextBirds(amount: number) {
       throw new Error("No bird items found");
     }
 
+    // add Unique Ids to the birds 
     const withIds = data.items.map((item: Bird) => ({ ...item, id: v4() }));
 
     return withIds;

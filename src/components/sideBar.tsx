@@ -6,7 +6,7 @@ import SettingsLogo from "../assets/settings.svg";
 import Modal from "react-modal";
 
 const DEFAULT_TOTAL_AMOUNT = 5;
-const MAX_ITEMS_PER_FETCH = 2;
+const MAX_ITEMS_PER_FETCH = 2; // 2 items per fetch so it would be easy to see the change every scroll
 
 Modal.setAppElement(document.getElementById("root"));
 
@@ -40,10 +40,17 @@ const SideBar = ({
   const [birds, setBirds] = useState<Bird[] | undefined>([]);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(DEFAULT_TOTAL_AMOUNT);
- 
+
   useEffect(() => {
     fetchNextData();
   }, []);
+
+  useEffect(() => {
+    if (totalAmount < birds?.length) {
+      const redundentItemsAmount = birds?.length - totalAmount;
+      setBirds((prev) => prev?.splice(-redundentItemsAmount));
+    }
+  }, [birds?.length, totalAmount]);
 
   function closeModal() {
     setIsSettingsOpen(false);
@@ -59,6 +66,7 @@ const SideBar = ({
     setBirds((prev) => {
       const res = prev?.concat([...newBirds]);
 
+      // first time we fetch select the first element
       if (prev?.length === 0 && res?.length > 0) {
         onSelectedItemChanged(res[0]);
       }
@@ -81,7 +89,6 @@ const SideBar = ({
           className="self-start w-6 cursor-pointer"
         />
         <span className="text-xl">
-          {" "}
           Rendered Items : {birds?.length} / {totalAmount}
         </span>
       </div>
@@ -120,11 +127,11 @@ const SideBar = ({
         onRequestClose={closeModal}
         style={customStyles}
       >
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-row gap-4 text-xl">
           <span>Please set the Total Amount of Items:</span>
           <input
             type="number"
-            className="bg-gray-300"
+            className="pl-2 bg-gray-300"
             value={totalAmount}
             onChange={(e) => setTotalAmount(Number(e.target.value))}
           />
