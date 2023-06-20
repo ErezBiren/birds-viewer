@@ -20,13 +20,12 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
     setGoogleMapsLink(linkWithCoordinates);
   }, [bird]);
 
-  console.log(5555);
-  console.log(googleMapsLink);
+  //console.log(googleMapsLink);
 
   return (
     <>
       {bird && (
-        <div className="flex flex-col w-full gap-0 bg-green-200">
+        <div className="flex flex-col items-center gap-10 bg-green-200 just">
           <span>{bird.name}</span>
           <img
             src={bird.image}
@@ -40,10 +39,13 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
           <a
             target="_blank"
             href={googleMapsLink}
-            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            className="font-medium text-blue-500 hover:underline"
           >
             go to google
           </a>
+          <audio controls>
+            <source src={bird.sound} type="audio/mpeg" />
+          </audio>
         </div>
       )}
     </>

@@ -4,5 +4,5 @@ export interface Bird {
   name: string;
   image: string;
   location: Location;
-  audioSample: string;
+  sound: string;
 }
