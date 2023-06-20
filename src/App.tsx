@@ -39,7 +39,10 @@ function App() {
         []
       );
 
+        
+
       setBirds(uniqueBirdsByName);
+      setSelectedBird(uniqueBirdsByName[0]);
     } catch (error) {
       //setError(error.message);
     }
@@ -49,11 +52,14 @@ function App() {
     setSelectedBird(item);
   }
 
+  console.table(birds)
+
   return (
     <div className="flex flex-row">
       <div className="w-1/5 h-screen pt-10 overflow-y-auto bg-gray-200">
         <SideBar
           items={birds}
+          bird={selectedBird}
           onSelectedItemChanged={selectedItemChanged}
           defaultImage={birdDefaultImage}
         />

@@ -22,7 +22,7 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
     <>
       {bird && (
         <div className="flex flex-col items-center w-full gap-10 just">
-          <span className="mt-10 font-bold">{bird.name}</span>
+          <span className="mt-10 text-2xl font-bold" >{bird.name}</span>
           <img
             src={bird.image}
             alt={bird.name}
@@ -35,13 +35,14 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
           <a
             target="_blank"
             href={googleMapsLink}
-            className="font-medium text-blue-500 hover:underline"
+            className="text-xl font-medium text-blue-500 hover:underline"
           >
             go to google
           </a>
           <audio controls>
             <source src={bird.sound} type="audio/mpeg" />
           </audio>
+          {bird.sound}
         </div>
       )}
     </>
