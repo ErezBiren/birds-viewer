@@ -1,4 +1,5 @@
 # birds-viewer
+![image](https://github.com/ErezBiren/birds-viewer/assets/7828909/c5a801e1-cb35-4c40-9dcf-317bec75bada)
 
 ### Installation
 
