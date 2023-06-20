@@ -26,7 +26,7 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
           <img
             src={bird.image}
             alt={bird.name}
-            className="object-cover w-80 h-80"
+            className="object-cover w-100 h-80"
             onError={({ currentTarget }) => {
               currentTarget.onerror = null; // prevents looping
               currentTarget.src = defaultImage;
@@ -35,9 +35,9 @@ const MainView = ({ bird, defaultImage }: MainViewProps) => {
           <a
             target="_blank"
             href={googleMapsLink}
-            className="text-xl font-medium text-green-500 hover:underline"
+            className="text-xl font-medium text-green-500 underline"
           >
-            Go to Google
+            Google Maps
           </a>
           <audio controls>
             <source src={bird.sound} type="audio/mpeg" />

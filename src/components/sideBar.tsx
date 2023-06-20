@@ -1,7 +1,7 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Bird } from "../types/bird";
 import { useState, useEffect } from "react";
-import useFetchNextBirds from "../hooks/useFetchNextBirds";
+import fetchNextBirds from "../api/zapariApi";
 import SettingsLogo from "../assets/settings.svg";
 import Modal from "react-modal";
 
@@ -40,8 +40,7 @@ const SideBar = ({
   const [birds, setBirds] = useState<Bird[] | undefined>([]);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(DEFAULT_TOTAL_AMOUNT);
-  const { fetchNextBirds } = useFetchNextBirds();
-
+ 
   useEffect(() => {
     fetchNextData();
   }, []);
