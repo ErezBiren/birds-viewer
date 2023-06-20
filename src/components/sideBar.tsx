@@ -2,7 +2,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Bird } from "../types/bird";
 import { useState, useEffect } from "react";
 import fetchNextBirds from "../api/zapariApi";
-import SideBarHeader from "./sideBarHeader";
+import SideBarHeader from "./SideBarHeader";
 
 const DEFAULT_TOTAL_AMOUNT = 5;
 const MAX_ITEMS_PER_FETCH = 2; // 2 items per fetch so it would be easy to see the change every scroll

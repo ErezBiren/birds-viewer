@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import MainView from "./components/mainView";
-import SideBar from "./components/sideBar";
+import MainView from "./components/MainView";
+import SideBar from "./components/SideBar";
 import { Bird } from "./types/bird";
 import birdDefaultImage from "./assets/birdDefaultImage.jpg";
 
