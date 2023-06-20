@@ -18,7 +18,6 @@ const SideBar = ({
           key={item.name}
           className="flex flex-col gap-2 cursor-pointer w-100px h-100px"
           onClick={() => {
-            console.log(item.name);
             onSelectedItemChanged(item);
           }}
         >

@@ -7,7 +7,7 @@ import birdDefaultImage from "./assets/birdDefaultImage.jpg";
 
 function App() {
   const [birds, setBirds] = useState<Bird[]>([]);
-  const [selectedBird, setSelectedBird] = useState<Bird>();
+  const [selectedBird, setSelectedBird] = useState<Bird | undefined>();
 
   useEffect(() => {
     fetchBirds();
@@ -43,7 +43,7 @@ function App() {
     }
   }
 
-  function selectedItemChanged(item: any) {
+  function selectedItemChanged(item: Bird) {
     setSelectedBird(item);
   }
 
@@ -55,7 +55,7 @@ function App() {
           onSelectedItemChanged={selectedItemChanged}
           defaultImage={birdDefaultImage}
         />
-        <MainView bird={selectedBird} />
+        <MainView bird={selectedBird} defaultImage={birdDefaultImage}/>
       </div>
     </>
   );

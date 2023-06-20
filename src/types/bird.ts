@@ -1,6 +1,8 @@
+import { Location } from "./common";
+
 export interface Bird {
   name: string;
   image: string;
-  geolocation: Location;
+  location: Location;
   audioSample: string;
 }
