@@ -55,7 +55,6 @@ function App() {
 
   return (
     <div className="flex flex-row">
-      
       <div className="w-1/5 h-screen pt-10 overflow-y-auto bg-gray-200">
         <SideBar
           items={birds}
@@ -66,7 +65,13 @@ function App() {
       </div>
 
       <MainView bird={selectedBird} defaultImage={birdDefaultImage} />
-      
+      <div className="self-start p-5 bg-gray-300">
+        <img
+          src={SettingsLogo}
+          alt="React Logo"
+          className="self-start w-10 cursor-pointer"
+        />
+      </div>
     </div>
   );
 }
