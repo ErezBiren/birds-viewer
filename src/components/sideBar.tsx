@@ -30,11 +30,14 @@ const SideBar = ({
     // remove birds from the list if total now is smaller
 
     setBirds((prev) => {
-      if (prev && totalAmount < prev?.length) {
-        const redundantItemsAmount = prev?.length - totalAmount;
-        return prev?.splice(-redundantItemsAmount);
-      } else return prev;
+      console.log(totalAmount + " " + prev?.length);
+      if (prev && totalAmount < prev.length) {
+        const redundantItemsAmount = prev.length - totalAmount;
+        return prev.splice(-redundantItemsAmount);
+      }
+      return prev;
     });
+
   }, [birds?.length, totalAmount]);
 
   async function fetchMoreBirds() {
