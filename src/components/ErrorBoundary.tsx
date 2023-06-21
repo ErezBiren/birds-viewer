@@ -13,7 +13,7 @@ export default class ErrorBoundary extends React.Component<
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
+  componentDidCatch(error: Error, errorInfo: unknown) {
     console.error('failed to render:', error, errorInfo);
   }
 
