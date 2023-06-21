@@ -33,6 +33,7 @@ const SideBarHeader = ({
   onTotalChanged,
 }: SideBarHeaderProps) => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [tempTotal, setTempTotal] = useState(totalAmount);
 
   function closeModal() {
     setIsSettingsOpen(false);
@@ -63,8 +64,9 @@ const SideBarHeader = ({
           <input
             type="number"
             className="pl-2 bg-gray-300"
-            value={totalAmount}
-            onChange={(e) => onTotalChanged(Number(e.target.value))}
+            value={tempTotal}
+            onChange={(e) => setTempTotal(Number(e.target.value))}
+            onBlur={(e) => onTotalChanged(tempTotal)}
           />
         </div>
       </Modal>

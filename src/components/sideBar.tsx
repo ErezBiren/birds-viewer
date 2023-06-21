@@ -6,7 +6,7 @@ import SideBarHeader from "./SideBarHeader";
 import SideBarItem from "./SideBarItem";
 
 const DEFAULT_TOTAL_AMOUNT = 5;
-const MAX_ITEMS_PER_FETCH = 2; // 2 items per fetch so it would be easy to see the change every scroll
+const MAX_ITEMS_PER_FETCH = 5; // 2 items per fetch so it would be easy to see the change every scroll
 
 type SideBarProps = {
   defaultImage: string;
