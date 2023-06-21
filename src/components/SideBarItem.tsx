@@ -7,7 +7,7 @@ type SideBarItemProps = {
 
 const SideBarItem = ({ item, defaultImage }:SideBarItemProps) => {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <span className="font-bold">{item.name}</span>
       <img
         src={item.image}
