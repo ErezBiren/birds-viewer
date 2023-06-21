@@ -28,10 +28,13 @@ const SideBar = ({
 
   useEffect(() => {
     // remove birds from the list if total now is smaller
-    if (birds && totalAmount < birds?.length) {
-      const redundantItemsAmount = birds?.length - totalAmount;
-      setBirds((prev) => prev?.splice(-redundantItemsAmount));
-    }
+
+    setBirds((prev) => {
+      if (prev && totalAmount < prev?.length) {
+        const redundantItemsAmount = prev?.length - totalAmount;
+        return prev?.splice(-redundantItemsAmount);
+      } else return prev;
+    });
   }, [birds?.length, totalAmount]);
 
   async function fetchMoreBirds() {
